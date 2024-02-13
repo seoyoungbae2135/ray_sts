@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 20230213-2~7 -->
+<mapper namespace="com.example.gradleTest2.DAO.SimpleBbsDaoImple">
+	
+	<select id = "list" resultType="com.example.gradleTest2.DTO.SimpleBbsDto">
+		select * from simple_bbs order by id desc;
+	</select>
+	
+	<insert id="write" parameterType="com.example.gradleTest2.DTO.SimpleBbsDto">
+		insert into simple_bbs (writer,title,content)
+			values( #{writer} , #{title} , #{content} )
+	</insert>
+	
+	<select id="view" resultType="com.example.gradleTest2.DTO.SimpleBbsDto">
+		select * from simple_bbs where id=#{id}
+	</select>
+	
+	<delete id="delete">
+		delete from simple_bbs where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.example.gradleTest2.DTO.SimpleBbsDto">
+		update simple_bbs set title=#{title}, content=#{content} 
+					where id=#{id}
+	</update>
+</mapper>
+
